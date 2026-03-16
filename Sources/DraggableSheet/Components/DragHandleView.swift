@@ -6,7 +6,7 @@ import SwiftUI
 struct DragHandleView: View {
 
     let configuration: SheetConfiguration
-    let accessibilityLabel: String
+    let accessibilityIdentifier: String
 
     var body: some View {
         Capsule()
@@ -16,6 +16,6 @@ struct DragHandleView: View {
                 height: configuration.handleSize.height
             )
             .padding(.vertical, 10)
-            .accessibilityLabel(accessibilityLabel)
+            .accessibilityIdentifier(accessibilityIdentifier)
     }
 }

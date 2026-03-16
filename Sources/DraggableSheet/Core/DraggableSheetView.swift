@@ -31,7 +31,7 @@ public struct DraggableSheetView<Content: View>: View {
 
     let positions: [SheetPosition]
     let configuration: SheetConfiguration
-    let accessibilityLabel: String
+    let accessibilityIdentifier: String
     let content: () -> Content
 
     // MARK: - Init
@@ -40,13 +40,13 @@ public struct DraggableSheetView<Content: View>: View {
         position: Binding<SheetPosition>,
         positions: [SheetPosition] = SheetPosition.defaults,
         configuration: SheetConfiguration = SheetConfiguration(),
-        accessibilityLabel: String = "Draggable Sheet",
+        accessibilityIdentifier: String = "Draggable Sheet",
         @ViewBuilder content: @escaping () -> Content
     ) {
         self._position = position
         self.positions = positions
         self.configuration = configuration
-        self.accessibilityLabel = accessibilityLabel
+        self.accessibilityIdentifier = accessibilityIdentifier
         self.content = content
     }
 
@@ -81,7 +81,7 @@ public struct DraggableSheetView<Content: View>: View {
                         if configuration.showHandle {
                             DragHandleView(
                                 configuration: configuration,
-                                accessibilityLabel: accessibilityLabel
+                                accessibilityIdentifier: accessibilityIdentifier
                             )
                         }
 

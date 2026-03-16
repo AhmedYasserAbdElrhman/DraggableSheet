@@ -10,7 +10,7 @@ struct DraggableSheetModifier<SheetContent: View>: ViewModifier {
     @Binding var position: SheetPosition
     let positions: [SheetPosition]
     let configuration: SheetConfiguration
-    let accessibilityLabel: String
+    let accessibilityIdentifier: String
     let sheetContent: () -> SheetContent
 
     func body(content: Content) -> some View {
@@ -19,7 +19,7 @@ struct DraggableSheetModifier<SheetContent: View>: ViewModifier {
                 position: $position,
                 positions: positions,
                 configuration: configuration,
-                accessibilityLabel: accessibilityLabel,
+                accessibilityIdentifier: accessibilityIdentifier,
                 content: sheetContent
             )
         }
@@ -45,13 +45,13 @@ public extension View {
     ///   - position: Binding to the current sheet position.
     ///   - positions: Allowed snap positions (stored once, won't cause re-renders).
     ///   - configuration: Styling and behavior options.
-    ///   - accessibilityLabel: VoiceOver label for the drag handle.
+    ///   - accessibilityIdentifier: VoiceOver label for the drag handle.
     ///   - content: The sheet's content view.
     func draggableSheet<SheetContent: View>(
         position: Binding<SheetPosition>,
         positions: [SheetPosition] = SheetPosition.defaults,
         configuration: SheetConfiguration = SheetConfiguration(),
-        accessibilityLabel: String = "Draggable Sheet",
+        accessibilityIdentifier: String = "Draggable Sheet",
         @ViewBuilder content: @escaping () -> SheetContent
     ) -> some View {
         modifier(
@@ -59,7 +59,7 @@ public extension View {
                 position: position,
                 positions: positions,
                 configuration: configuration,
-                accessibilityLabel: accessibilityLabel,
+                accessibilityIdentifier: accessibilityIdentifier,
                 sheetContent: content
             )
         )
