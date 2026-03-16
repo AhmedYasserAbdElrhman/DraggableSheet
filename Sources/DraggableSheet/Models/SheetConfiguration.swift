@@ -22,6 +22,7 @@ public struct SheetConfiguration: Equatable {
             && lhs.handleColor == rhs.handleColor
             && lhs.handleSize == rhs.handleSize
             && lhs.dragThreshold == rhs.dragThreshold
+            && lhs.maxDimmingOpacity == rhs.maxDimmingOpacity
     }
 
     // MARK: - Appearance
@@ -48,6 +49,10 @@ public struct SheetConfiguration: Equatable {
 
     // MARK: - Behavior
 
+    /// Maximum dimming opacity behind the sheet as it expands.
+    /// Set to `0` to disable dimming entirely.
+    public var maxDimmingOpacity: Double
+
     /// Minimum drag distance (in points) required to trigger a position snap.
     public var dragThreshold: CGFloat
 
@@ -63,6 +68,7 @@ public struct SheetConfiguration: Equatable {
         showHandle: Bool = true,
         handleColor: Color = Color.gray.opacity(0.5),
         handleSize: CGSize = CGSize(width: 40, height: 5),
+        maxDimmingOpacity: Double = 0,
         dragThreshold: CGFloat = 50,
         animation: Animation = .interactiveSpring(response: 0.4, dampingFraction: 0.8)
     ) {
@@ -72,6 +78,7 @@ public struct SheetConfiguration: Equatable {
         self.showHandle = showHandle
         self.handleColor = handleColor
         self.handleSize = handleSize
+        self.maxDimmingOpacity = maxDimmingOpacity
         self.dragThreshold = dragThreshold
         self.animation = animation
     }
