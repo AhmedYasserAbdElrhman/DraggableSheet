@@ -90,7 +90,7 @@ public struct DraggableSheetView<Content: View>: View {
                             .padding(.bottom, bottomInset)
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                     }
-                    .frame(width: outer.size.width, height: dynamicHeight, alignment: .top)
+                    .frame(width: outer.size.width, height: containerHeight, alignment: .top)
                     .background(configuration.backgroundColor)
                     .clipShape(
                         UnevenRoundedRectangle(
